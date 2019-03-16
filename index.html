@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css" type="text/css"> 
 
-        <!-- Dlapak styles -->
+        <!-- Styles -->
         <link id="theme_style" type="text/css" href="assets/css/style1.css" rel="stylesheet" media="screen">
 
         <!-- Assets -->
@@ -26,20 +26,13 @@
             <header class="navbar navbar-default navbar-fixed-top navbar-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                            <span class="sr-only">Navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a href="#" class="navbar-brand"><span class="logo"><i class="fa fa-leaf"></i> Marketspace</span></a>
+                       <a href="#" class="navbar-brand"><span class="logo"><i class="fa fa-leaf"></i> Marketspace</span></a>
                     </div>
-
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="new-ads"><a href="#" class="btn btn-ads btn-block">post right now</a></li>
                             <li><a href="#" class="fa fa-user-plus">Signup</a></li>
-                            <li><a href="#" class="fa fa-user">Login</a>
+                            <li><a href="login.html" class="fa fa-user">Login</a>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown"><strong class="fa fa-paw"></strong>&nbsp;Myself<strong class="caret"></strong></a>
                                 <ul class="dropdown-menu">
@@ -365,39 +358,6 @@
                     </div>
                 </div>
             </section>
-            <div class="counter">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="item-counter">
-                                <span class="item-icon"><i class="fa fa-database"></i></span>
-                                <div data-refresh-interval="100" data-speed="3000" data-to="7803" data-from="0" class="item-count">7803</div>
-                                <span class="item-info">Items</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="item-counter">
-                                <span class="item-icon"><i class="fa fa-balance-scale"></i></span>
-                                <div data-refresh-interval="50" data-speed="5000" data-to="427" data-from="0" class="item-count">427</div>
-                                <span class="item-info">Sellers</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="item-counter">
-                                <span class="item-icon"><i class="fa fa-map-marker"></i></span>
-                                <div data-refresh-interval="80" data-speed="5000" data-to="639" data-from="0" class="item-count">639</div>
-                                <span class="item-info">Locations</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="item-counter">
-                                <span class="item-icon"><i class="fa fa-users"></i></span>
-                                <div data-refresh-interval="80" data-speed="5000" data-to="1548" data-from="0" class="item-count">1548</div>
-                                <span class="item-info">Members</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- / .counter -->
     </div>
     <div class="footer">
         <div class="container">
@@ -409,7 +369,7 @@
             </li>
         </ul>
         <ul class="pull-right footer-menu">
-            <li>Copyright &copy; 2019.All rights reserved by Will_the_Wizard.</li>
+            Copyright &copy; 2019. All rights reserved by Will_the_Wizard.<a class="fa fa-at" href="https://github.com/willthewizard666"> Me<a>
         </ul>
         </div>
     </div>
@@ -420,7 +380,6 @@
 <script src="assets/plugins/counter/jquery.countTo.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
         // ===========Featured Owl Carousel============
         if ($(".owl-carousel-featured").length > 0) {
             $(".owl-carousel-featured").owlCarousel({
@@ -431,19 +390,6 @@
                 stopOnHover: true
             });
         }
-
-        // ==================Counter====================
-        $('.item-count').countTo({
-            formatter: function (value, options) {
-                return value.toFixed(options.decimals);
-            },
-            onUpdate: function (value) {
-                console.debug(this);
-            },
-            onComplete: function (value) {
-                console.debug(this);
-            }
-        });
     });
 </script>
 </body>
