@@ -1,0 +1,3 @@
+Safari，某些字不能显示
+firefox，dropdown 有问题
+chrome正常 
