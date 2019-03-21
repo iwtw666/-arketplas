@@ -14,15 +14,6 @@ a:hover{
 	text-decoration: none;
 	color: #398110;
 }
-.no-padding{
-	padding: 0 !important;
-}
-.no-margin{
-	margin: 0 !important;
-}
-.no-border{
-	border: none !important;
-}
 .navbar{
 	margin-bottom: 0;
 	border-radius: 0;
@@ -40,7 +31,7 @@ a:hover{
 	background: #FFF;
 	padding-top: 10px;
 }
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover{
+.navbar-default .navbar-nav > a, .navbar-default .navbar-nav > a:focus, .navbar-default .navbar-nav > a:hover{
 	background-color: #58b325;
 	color: #FFF;
 }
@@ -83,12 +74,6 @@ a:hover{
 	background: url("../img/background/serchbar.jpg") no-repeat center center / cover  rgba(0, 0, 0, 1);
 	color: #FFF;
 }
-.category-search{
-	background: url("../img/background/serchbar.jpg") no-repeat center center / cover  rgba(0, 0, 0, 1);
-	color: #FFF;
-	padding-top: 40px;
-	padding-bottom: 30px;
-}
 .serchbar-title{
 	font-weight: 800;
 	text-transform: uppercase;
@@ -117,7 +102,7 @@ a:hover{
 	padding:30px 0;
 	min-height: 460px;
 }
-.widget, .post, .box-content{
+.widget{
 	background: #FFF;
 	padding: 15px;
 	border: 1px solid #DDD;
@@ -234,7 +219,7 @@ a:hover{
 	height: 150px;
 	text-align: center;
 }
-.footer {
+.footer{
   background: #fff;
   border-top: solid 1px #ddd;
   padding: 30px 0;
