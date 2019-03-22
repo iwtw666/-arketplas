@@ -30,18 +30,12 @@ box-shadow: 0px 0px 5px 1px #000000;
 }
 button
 {
-background: #ff5f32;
-border-radius:50%;
 border:10px solid #22252694;
 font-size:0.9em;
 color:#fff;
 font-weight:bold;
 cursor:pointer;
-width:85px;
-height:85px;
 position:absolute;
-right: 20px;
-top: 120px;
 text-align:center;
 transition:0.5s ease;
 }
