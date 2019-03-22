@@ -12,7 +12,7 @@ a{
 }
 a:hover{
 	text-decoration: none;
-	color: #398110;
+	color: #f84109;
 }
 .navbar{
 	margin-bottom: 0;
@@ -23,7 +23,7 @@ a:hover{
 }
 .logo{
 	font-size: 25px;
-	color: #58b325;
+	color: #ff511c;
   	font-weight: 800;
   	text-transform: uppercase;
 }
@@ -32,7 +32,7 @@ a:hover{
 	padding-top: 10px;
 }
 .navbar-default .navbar-nav > a, .navbar-default .navbar-nav > a:focus, .navbar-default .navbar-nav > a:hover{
-	background-color: #58b325;
+	background-color: #f84109;
 	color: #FFF;
 }
 .navbar-nav > li > a{
@@ -50,23 +50,23 @@ a:hover{
 	color: #FFF !important;
 }
 .navbar-nav > li.new-ads a:hover, .navbar-nav > li.new-ads a:focus{
-	background-color: #398110;
+	background-color: #ff641c;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
-	color: #58b325;
+	color: #ff511c;
 }
 .btn-ads{
-	background-color: #58b325;
+	background-color: #ff3e1c;
 }
 .btn{
 	text-transform: uppercase;
 }
 .btn-custom{
-	background-color: #58b325;
+	background-color: #ff3e1c;
 	color: #FFF;
 }
 .btn-custom:hover{
-	background-color: #398110;
+	background-color: #ff641c;
 	color: #FFF;
 }
 .serchbar{
@@ -116,7 +116,7 @@ a:hover{
 	font-size: 15px;
 	text-transform: uppercase;
 	font-weight: 700;
-	color: #58b325;
+	color: #ff511c;
 }
 .widget-header{
 	border-bottom: 1px solid #E7E7E7;
