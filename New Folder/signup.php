@@ -24,13 +24,13 @@
         <header class="navbar navbar-default navbar-fixed-top navbar-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand"><span class="logo"><i class="fa fa-leaf"></i> Marketspace</span></a>
+                    <a href="index_done.php" class="navbar-brand"><span class="logo"><i class="fa fa-leaf"></i> Marketspace</span></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="new-ads"><a href="#" class="btn btn-ads btn-block">post right now</a></li>
                         <li><a href="#" class="fa fa-user-plus">Signup</a></li>
-                        <li><a href="login.php" class="fa fa-user">Login</a>
+                        <li><a href="login_done.php" class="fa fa-user">Login</a>
                         <li><a href="#" class="fa fa-paw">Myself</a>
                     </ul>
                 </div>

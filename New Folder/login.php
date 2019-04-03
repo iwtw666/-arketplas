@@ -24,7 +24,7 @@
         <header class="navbar navbar-default navbar-fixed-top navbar-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand"><span class="logo"><i class="fa fa-leaf"></i> Marketspace</span></a>
+                    <a href="index_done.php" class="navbar-brand"><span class="logo"><i class="fa fa-leaf"></i> Marketspace</span></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -38,11 +38,13 @@
         </header>
         <div id="loginform">
             <h1>Log in</h1>
-            <form action="#">
-                Username or Email:
-                <input type="text" placeholder="username or email" value="" required>
+            <form action="login_done.php" method="POST">
+                Email:
+                <input type="email" name="email" placeholder="email" value="" required>
                 Password:
-                <input type="password" placeholder="password" value="" required>
+                <input type="password" name="password" placeholder="password" value="" required>
+                <input type="checkbox" id="remember" name="remember" style="box-shadow:none;">
+                <label for="remember">Remember my email</label>
                 <button type="submit"><i class="fa fa-arrow-right"></i></button>
             </form>
         </div>
