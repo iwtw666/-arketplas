@@ -22,13 +22,17 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="new-ads"><a href="#" class="btn btn-ads btn-block">post right now</a></li>
-                            <li><a href="signup.php" class="fa fa-user-plus">Signup</a></li>
+                            <li><a href="signup_done.php" class="fa fa-user-plus">Signup</a></li>
                             <?php if (isset($_SESSION["email"])) {
                             echo '<li><a href="login_done.php?logout" class="fa fa-user">Log out</a>';}
                             else {
                             echo'<li><a href="login_done.php" class="fa fa-user">Login</a>';}
                             ?>
+                            <?php if (isset($_SESSION["email"])): ?>
+                            <li><a href="myself.php" class="fa fa-paw">Myself</a>
+                            <?php else: ?>
                             <li><a href="#" class="fa fa-paw">Myself</a>
+                            <?php endif ?>
                         </ul>
                     </div>
                 </div>

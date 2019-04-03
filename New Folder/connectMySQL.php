@@ -5,7 +5,7 @@ class MySQLDatabase {
     private $dbhost = 'localhost';
     private $dbuser = 'root';
     private $dbpassword = '';
-    private $db = 'demo';
+    private $db = 'test';
 
     function connect() {
         $this->link = mysqli_connect($this->dbhost, $this->dbuser, $this->dbpassword);

@@ -74,26 +74,30 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="new-ads"><a href="#" class="btn btn-ads btn-block">post right now</a></li>
-                        <li><a href="signup.php" class="fa fa-user-plus">Signup</a></li>
+                        <li><a href="signup_done.php" class="fa fa-user-plus">Signup</a></li>
                         <?php if (isset($_SESSION["email"])) {
                             echo '<li><a href="login_done.php?logout" class="fa fa-user">Log out</a>';}
                             else {
                             echo'<li><a href="login_done.php" class="fa fa-user">Login</a>';}
                         ?>
+                        <?php if (isset($_SESSION["email"])): ?>
+                        <li><a href="myself.php" class="fa fa-paw">Myself</a>
+                        <?php else: ?>
                         <li><a href="#" class="fa fa-paw">Myself</a>
+                        <?php endif ?>
                     </ul>
                 </div>
             </div>
         </header>
         <div id="loginform">
             <h1>Log in</h1>
-            <form action="login_done.php">
+            <form action="login_done.php" method="POST">
                 Email:
                 <input type="email" name="email" placeholder="email" 
                 value="<?php if (isset($_COOKIE["email"])): echo $_COOKIE["email"]; endif ?>" required>
                 Password:
                 <input type="password" name="password" placeholder="password" value="" required>
-                <input type="checkbox" id="remember" name="remember" style="box-shadow:none;"
+                <input type="checkbox" id="remember" name="remember" style="box-shadow:none;width:18px;"
                 <?php if (isset($_COOKIE["email"])): echo "checked"; endif ?>>
                 <label for="remember">Remember my email</label>
                 <button type="submit"><i class="fa fa-arrow-right"></i></button>
