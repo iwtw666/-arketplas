@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $link = mysqli_connect('localhost', 'root', '', 'test');
 if (!$link) {
     die('Could not connect: ' . mysql_error());
