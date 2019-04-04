@@ -1,3 +1,48 @@
+<?php
+    require 'connectMySQL.php';
+    
+    session_start();
+
+    if (isset($_POST["email"]) && isset($_POST["password"])) {
+
+        if (isset($_POST["remember"])) {
+            setcookie("email", $_POST["email"], time() + 60*60*24, "/");
+            $_COOKIE["email"] = $_POST["email"];
+        } else {
+            setcookie("email", null, -1, "/");
+        }
+
+        // Check in DB
+        $db = new MySQLDatabase();
+        $db->connect();
+        $email = $_POST["email"];
+        $query = "SELECT * FROM users WHERE email = '$email'";
+        $result = $db->query($query);
+        /*while($row = mysqli_fetch_array($result)) {
+            print "Name: {$row['username']} has ID: {$row['userId']}";
+        }*/
+        if ($row = mysqli_fetch_array($result)) {
+            if ($_POST['password'] === $row['password']) {
+                $_SESSION["email"] = $_POST["email"];
+                header("Location: index_done.php");
+                echo($_POST["email"]);
+            } else {
+                echo 'Incorrect Password!';
+            } 
+        } else {
+            echo 'Email not found';
+        }
+        $db->disconnect();
+
+    }
+
+    if (isset($_GET["logout"])) {
+        session_destroy();
+        header("Location: index_done.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,20 +75,30 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="new-ads"><a href="#" class="btn btn-ads btn-block">post right now</a></li>
                         <li><a href="signup.php" class="fa fa-user-plus">Signup</a></li>
-                        <li><a href="#" class="fa fa-user">Login</a>
-                        <li><a href="#" class="fa fa-paw">Myself</a>
+                        <?php if (isset($_SESSION["email"])) {
+                            echo '<li><a href="login.php?logout" class="fa fa-user">Log out</a>';}
+                            else {
+                            echo'<li><a href="login.php" class="fa fa-user">Login</a>';}
+                        ?>
+                        <?php if (isset($_SESSION["email"])): ?>
+                        <li><a href="myself.php" class="fa fa-paw">Myself</a>
+                        <?php else: ?>
+                        <li><a href="loginfirst.php" class="fa fa-paw">Myself</a>
+                        <?php endif ?>
                     </ul>
                 </div>
             </div>
         </header>
         <div id="loginform">
             <h1>Log in</h1>
-            <form action="login_done.php" method="POST">
+            <form action="login.php" method="POST">
                 Email:
-                <input type="email" name="email" placeholder="email" value="" required>
+                <input type="email" name="email" placeholder="email" 
+                value="<?php if (isset($_COOKIE["email"])): echo $_COOKIE["email"]; endif ?>" required>
                 Password:
                 <input type="password" name="password" placeholder="password" value="" required>
-                <input type="checkbox" id="remember" name="remember" style="box-shadow:none;">
+                <input type="checkbox" id="remember" name="remember" style="box-shadow:none;width:18px;"
+                <?php if (isset($_COOKIE["email"])): echo "checked"; endif ?>>
                 <label for="remember">Remember my email</label>
                 <button type="submit"><i class="fa fa-arrow-right"></i></button>
             </form>

@@ -4,7 +4,7 @@ class MySQLDatabase {
     private $link = null;
     private $dbhost = 'localhost';
     private $dbuser = 'root';
-    private $dbpassword = '';
+    private $dbpassword = '4a9a85ae94b94fb8';
     private $db = 'test';
 
     function connect() {

@@ -1,408 +1,106 @@
-﻿<!DOCTYPE html>
-<html>  
+﻿<?php
+session_start();
+$dnemail=$_SESSION["email"];
+$dnmysqli = new mysqli('localhost', 'root', '4a9a85ae94b94fb8', 'test');
+
+$dnrs = $dnmysqli->query("SELECT * FROM users WHERE email = '$dnemail'");
+
+$dnrow = mysqli_fetch_array($dnrs);
+?>
+<!DOCTYPE html>
+<html>
     <head>
-        <meta charset="utf-8">
+        <meta charset='UTF-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="robots" content="index, follow">
-        <title>Dlapak</title>
+        <link id="theme_style" type="text/css" href="assets/css/style2.css" rel="stylesheet">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:regular,700,600&amp;latin" type="text/css" />
-        <!-- Essential styles -->
+        <!-- copy from index -->
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css" type="text/css"> 
-
-        <!-- Dlapak styles -->
-        <link id="theme_style" type="text/css" href="assets/css/style1.css" rel="stylesheet" media="screen">
-
-        <!-- Assets -->
-        <link rel="stylesheet" href="assets/plugins/owl-carousel/owl.carousel.css">
-        <link rel="stylesheet" href="assets/plugins/owl-carousel/owl.theme.css">
-        <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css" type="text/css" media="screen" />
-
-        <!-- JS Library -->
-        <script src="assets/js/jquery.js"></script>
-
+        <link id="theme_style" type="text/css" href="assets/css/style_index.css" rel="stylesheet" media="screen">
+    <style>
+    p{
+        display:block;
+        border-radius:10px;
+        background: #ffffff;
+        width:250px;
+        padding:12px 20px 12px 10px;
+        border:none;
+        color:#000000;                       
+        box-shadow:inset 0 1px 5px #272727;
+        transition:0.8s ease;
+        font-size:24px; 
+        margin:auto auto auto 550px;
+    }
+    h3{
+        margin:50px auto auto 550px;
+    }
+    h2{
+        margin:auto auto 40px 1150px;
+        font-style: italic;
+        font-size:18px
+    }
+    button{
+        right: 50px;
+        bottom: 120px;
+        background: #ffe282;
+        border-radius:0;
+        height:55px;
+        width:85px;
+    }
+    </style>
+    <script>
+    function openDoc()
+    {
+        var ajaxtest;
+        ajaxtest=new XMLHttpRequest();
+        ajaxtest.onreadystatechange=function(){
+            if (ajaxtest.readyState==4 && ajaxtest.status==200){
+			document.getElementById("myajax_test").innerHTML=ajaxtest.responseText;
+            }
+        }
+        ajaxtest.open("GET","ajax_test.txt",true);
+        ajaxtest.send();
+}
+</script>
     </head>
     <body>
-        <div class="wrapper">
-            <header  class="navbar navbar-default navbar-fixed-top navbar-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a href="#" class="navbar-brand"><span class="logo"><i class="fa fa-recycle"></i> Dlapak</span></a>
-                    </div>
-
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="new-ads"><a href="account_create_post.html" class="btn btn-ads btn-block">Advertise</a></li>
-                            <li><a href="#">Signup</a></li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" href="#" data-toggle="dropdown"><strong class="caret"></strong>&nbsp;Pages</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">My Ads</a></li>
-                                    <li><a href="account_create_post.html">Create Ads</a></li>
-                                    <li><a href="#">My Profile</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-user"></i> <strong class="caret"></strong>&nbsp;</a>
-                                <div class="dropdown-menu dropdown-login" style="padding:15px;min-width:250px">
-                                    <form>                       
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon addon-login"><i class="fa fa-user"></i></span>
-                                                <input type="text" placeholder="Username or email" required="required" class="form-control input-login">                                            
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon addon-login"><i class="addon fa fa-lock"></i></span>
-                                                <input type="password" placeholder="Password" required="required" class="form-control input-login">                                            
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label class="string optional" for="user_remember_me">
-                                                    <input type="checkbox" id="user_remember_me" style="">
-                                                    Remember me
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <input type="submit" class="btn btn-custom btn-block" value="Sign In">
-                                        <a href="#" class="btn-block text-center">Forgot password?</a>
-                                    </form>                                    
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
+        <header class="navbar navbar-default navbar-fixed-top navbar-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="index_done.php" class="navbar-brand"><span class="logo"><i class="fa fa-leaf"></i> Marketspace</span></a>
                 </div>
-            </header>
-            <section class="main">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="breadcrumb pull-left">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="category.html">Category</a></li>
-                                <li>Detail Product</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-8 col-sm-8">
-                            <div class="row">
-                                <div class="col-md-12">
-
-                                    <div class="post">
-                                        <div class="post-price">
-                                            $ 95.45
-                                        </div>
-                                        <div class="post-title">
-                                            <h2>Lenovo Thinkpad X1 Carbon</h2>
-                                        </div>
-                                        <div class="post-meta">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i> 2 minutes ago</li>
-                                                <li><i class="fa fa-bars"></i> <a href="category.html">Electronic</a>,<a href="category.html">Laptop</a></li>
-                                                <li><i class="fa fa-map-marker"></i> <a href="category.html">Mountain View</a></li>
-                                                <li><i class="fa fa-bookmark"></i> Used</li>
-                                            </ul>
-                                        </div>
-                                        <div class="flexslider post-images">
-                                            <ul class="slides">
-                                                <li data-thumb="assets/img/products/item-1.jpg">
-                                                    <img alt="" src="assets/img/products/item-1.jpg" />
-                                                </li>
-                                                <li data-thumb="assets/img/products/item-2.jpg">
-                                                    <img alt="" src="assets/img/products/item-2.jpg" />
-                                                </li>
-                                                <li data-thumb="assets/img/products/item-3.jpg">
-                                                    <img alt="" src="assets/img/products/item-3.jpg" />
-                                                </li>
-                                                <li data-thumb="assets/img/products/item-4.jpg">
-                                                    <img alt="" src="assets/img/products/item-4.jpg" />
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                        <div class="post-body">
-                                            <h4><strong>Spesification</strong></h4>
-                                            <ul>
-                                                <li>Display : 14 inch Gorilla Glass</li>
-                                                <li>Processor : Intel Core i7</li>
-                                                <li>Memory : 4GB</li>
-                                                <li>Storage : 320 GB</li>
-                                                <li>Baterai : Good</li>
-                                            </ul>
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                                            </p>
-                                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur 
-                                            </p>
-                                        </div>
-                                        <div class="post-footer">
-                                            <div class="row">
-                                                <div class="col-xs-6">    
-                                                    <button class="btn btn-info"><i class="fa fa-whatsapp"></i> <span class="hidden-xs hidden-sm">0823 4223 4234</span></button>
-                                                    <button class="btn btn-warning" data-target="#sendMessageModal" data-toggle="modal"><i class="fa fa-envelope"></i> <span class="hidden-xs hidden-sm">Send Message</span></button>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <div class="item-action pull-right">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Save Favorite" class="btn btn-success btn"><i class="fa fa-heart"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Show Details" class="btn btn-info btn"><i class="fa fa-share-alt"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="section-header">
-                                        <h2>More From John Doe</h2>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="item-ads-grid">
-                                                <div class="item-badge-grid featured-ads">
-                                                    <a href="#">Featured Ads</a>
-                                                </div>
-                                                <div class="item-img-grid">
-                                                    <img alt="" src="assets/img/products/product-1.jpg" class="img-responsive img-center">
-                                                </div>
-                                                <div class="item-title">
-                                                    <a href="detail.html"><h4>Lenovo A326 Black 4GB RAM</h4></a>
-                                                </div>
-                                                <div class="item-meta">
-                                                    <ul>
-                                                        <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 am</li>
-                                                        <li class="item-cat"><i class="fa fa-bars"></i> <a href="category.html">Electronics</a> , <a href="category.html">Smartphone</a></li>
-                                                        <li class="item-location"><a href="category.html"><i class="fa fa-map-marker"></i> Manchester</a></li>
-                                                        <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="product-footer">
-                                                    <div class="item-price-grid pull-left">
-                                                        <h3>$ 100</h3>
-                                                        <span>Negotiable</span>
-                                                    </div>
-                                                    <div class="item-action-grid pull-right">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Save Favorite" class="btn btn-default btn-sm"><i class="fa fa-heart"></i></a></li>
-                                                            <li><a href="detail.html" data-toggle="tooltip" data-placement="top" title="Show Details" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="item-ads-grid highlight-ads">
-                                                <div class="item-badge-grid hot-ads">
-                                                    <a href="#">Featured Ads</a>
-                                                </div>
-                                                <div class="item-img-grid">
-                                                    <img alt="" src="assets/img/products/product-2.jpg" class="img-responsive img-center">
-                                                </div>
-                                                <div class="item-title">
-                                                    <a href="detail.html"><h4>Samsung Galaxy Grand Prime 530 8GB Grey</h4></a>
-                                                </div>
-                                                <div class="item-meta">
-                                                    <ul>
-                                                        <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 am</li>
-                                                        <li class="item-cat"><i class="fa fa-bars"></i> <a href="category.html">Electronics</a> , <a href="category.html">Smartphone</a></li>
-                                                        <li class="item-location"><a href="category.html"><i class="fa fa-map-marker"></i> Manchester</a></li>
-                                                        <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="product-footer">
-                                                    <div class="item-price-grid pull-left">
-                                                        <h3>$ 100</h3>
-                                                        <span>Negotiable</span>
-                                                    </div>
-                                                    <div class="item-action-grid pull-right">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Save Favorite" class="btn btn-default btn-sm"><i class="fa fa-heart"></i></a></li>
-                                                            <li><a href="detail.html" data-toggle="tooltip" data-placement="top" title="Show Details" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="item-ads-grid">
-                                                <div class="item-badge-grid premium-ads">
-                                                    <a href="#">Featured Ads</a>
-                                                </div>
-                                                <div class="item-img-grid">
-                                                    <img alt="" src="assets/img/products/product-6.jpg" class="img-responsive img-center">
-                                                </div>
-                                                <div class="item-title">
-                                                    <a href="detail.html"><h4>Samsung Tab 3 V 116</h4></a>
-                                                </div>
-                                                <div class="item-meta">
-                                                    <ul>
-                                                        <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 am</li>
-                                                        <li class="item-cat"><i class="fa fa-bars"></i> <a href="category.html">Electronics</a> , <a href="category.html">Smartphone</a></li>
-                                                        <li class="item-location"><a href="category.html"><i class="fa fa-map-marker"></i> Manchester</a></li>
-                                                        <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="product-footer">
-                                                    <div class="item-price-grid pull-left">
-                                                        <h3>$ 100</h3>
-                                                        <span>Negotiable</span>
-                                                    </div>
-                                                    <div class="item-action-grid pull-right">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Save Favorite" class="btn btn-default btn-sm"><i class="fa fa-heart"></i></a></li>
-                                                            <li><a href="detail.html" data-toggle="tooltip" data-placement="top" title="Show Details" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <div class="widget">
-                                <div class="widget-header">
-                                    <h3>Seller</h3>
-                                </div>
-                                <div class="widget-body text-center">
-                                    <img alt="avatar" src="assets/img/people/gie.jpg" class="seller-avatar img-responsive">
-                                    <h2 class="seller-name">John Doe</h2>
-                                    <p class="seller-detail">Location: <strong>Orlando</strong><br/>
-                                        Joined : <strong>21 June 2010</strong></p>
-                                </div>
-                                <div class="widget-footer">
-                                    <div class="row">
-                                        <div class="col-sm-6">    
-                                            <button class="btn btn-info btn-block"><i class="fa fa-whatsapp"></i> 0823 4223 4234</button>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <button class="btn btn-warning btn-block" data-target="#sendMessageModal" data-toggle="modal"><i class="fa fa-envelope"></i> Send Message</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="widget">
-                                <div class="widget-header">
-                                    <h3>Browse by Category</h3>
-                                </div>
-                                <div class="widget-body">
-                                    <ul class="trends">
-                                        <li><a href="#">Smartphone &nbsp;<span class="item-numbers">(2,342)</span></a></li>
-                                        <li><a href="#">Watch &amp; Jewelry &nbsp;<span class="item-numbers">(2,342)</span></a></li>
-                                        <li><a href="#">Clothes &nbsp;<span class="item-numbers">(2,342)</span></a></li>
-                                        <li><a href="#">Shoes &nbsp;<span class="item-numbers">(2,342)</span></a></li>
-                                        <li><a href="#">Music &nbsp;<span class="item-numbers">(2,342)</span></a></li>
-                                        <li><a href="#">Furniture &nbsp;<span class="item-numbers">(2,342)</span></a></li>
-                                        <li><a href="#">Photography &nbsp;<span class="item-numbers">(242)</span></a></li>
-                                        <li><a href="#">Web Development &nbsp;<span class="item-numbers">(2,342)</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="widget">
-                                <div class="widget-header">
-                                    <h3>Browse by Brand</h3>
-                                </div>
-                                <div class="widget-body">
-                                    <ul class="brands">
-                                        <li><label><input type="checkbox"> Apple</label></li>
-                                        <li><label><input type="checkbox"> Asus</label></li>
-                                        <li><label><input type="checkbox"> Acer</label></li>
-                                        <li><label><input type="checkbox"> Nexus</label></li>
-                                        <li><label><input type="checkbox"> Nokia</label></li>
-                                        <li><label><input type="checkbox"> Lenovo</label></li>
-                                        <li><label><input type="checkbox"> Samsung</label></li>
-                                    </ul>
-                                </div>  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div class="footer">
-                <div class="container">
-                <ul class="pull-left footer-menu">
-                    <li>
-                        <a href="#"> Home </a>
-                        <a href="#"> About us </a>
-                        <a href="#"> Contact us </a>
-                    </li>
-                </ul>
-                <ul class="pull-right footer-menu">
-                    <li>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></li>
-                </ul>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="new-ads"><a href="#" class="btn btn-ads btn-block">post right now</a></li>
+                        <li><a href="signup.php" class="fa fa-user-plus">Signup</a></li>
+                        <?php if (isset($_SESSION["email"])) {
+                            echo '<li><a href="login.php?logout" class="fa fa-user">Log out</a>';}
+                            else {
+                            echo'<li><a href="login.php" class="fa fa-user">Login</a>';}
+                        ?>
+                        <?php if (isset($_SESSION["email"])): ?>
+                        <li><a href="#" class="fa fa-paw">Myself</a>
+                        <?php else: ?>
+                        <li><a href="loginfirst.php" class="fa fa-paw">Myself</a>
+                        <?php endif ?>
+                    </ul>
                 </div>
             </div>
+        </header>
+        <div>
+        <h1>Profile</h1>
+        <h3>Username:</h3>
+        <p><?php
+        echo $dnrow['username'];?></p>
+        <h3>Email:</h3>
+        <p><?php
+        echo $dnrow['email'];?></p>
+        <h3>Password:</h3>
+        <p><?php
+        echo $dnrow['password'];?></p>
         </div>
-
-        <!-- Send Message Modal -->
-        <div aria-labelledby="sendMessageModalLabel" role="dialog" tabindex="-1" id="sendMessageModal" class="modal fade in">
-            <div role="document" class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
-                        <h4 id="sendMessageModalLabel" class="modal-title">Send Message to Seller</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label class="control-label">Name:</label>
-                                <input type="text" class="form-control input-lg" placeholder="Your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Email:</label>
-                                <input type="email" class="form-control input-lg" placeholder="Your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="message-text">Message:</label>
-                                <textarea id="message-text" class="form-control input-lg" placeholder="Your message" required></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                        <button class="btn btn-custom" type="button"><i class="fa fa-paper-plane"></i> Send</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Message Modal -->
-
-        <!-- Essentials -->
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/plugins/owl-carousel/owl.carousel.js"></script>
-        <script src="assets/plugins/counter/jquery.countTo.js"></script>
-        <script defer src="assets/plugins/flexslider/jquery.flexslider.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-
-                // ===============Flexslider=====================
-                $('.flexslider').flexslider({
-                    animation: "slide",
-                    controlNav: "thumbnails",
-                    directionNav: false,
-                    start: function (slider) {
-                        $('body').removeClass('loading');
-                    }
-                });
-
-                // ==========tooltip initial=================
-                $('[data-toggle="tooltip"]').tooltip();
-            });
-        </script>
+        <div id="myajax_test"><h2>Privacy Policy</h2></div>
+        <button type="button" onclick="openDoc()">View</button>
     </body>
 </html> 
