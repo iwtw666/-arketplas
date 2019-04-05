@@ -6,6 +6,25 @@ $dnmysqli = new mysqli('localhost', 'root', '4a9a85ae94b94fb8', 'test');
 $dnrs = $dnmysqli->query("SELECT * FROM users WHERE email = '$dnemail'");
 
 $dnrow = mysqli_fetch_array($dnrs);
+if (isset($_POST["submit1"])) {
+    $phone = $_POST['phone'];
+    if(strlen($phone)<=10){
+        $setsql = "UPDATE users SET phone = '$phone' WHERE email = '$dnemail';";
+        $setrs = mysqli_query($dnmysqli, $setsql);
+        if ($setrs) {  
+            echo "<script>alert('Update Success!');
+            window.location.href = 'myself.php';</script>";
+        }
+        else {  
+            echo "<script>alert('Update Error!');
+            window.location.href = 'myself.php';</script>";
+        }
+    }
+    else{
+        echo "<script>alert('Phone # is too long!');
+            window.location.href = 'myself.php';</script>";
+        }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,6 +38,19 @@ $dnrow = mysqli_fetch_array($dnrs);
         <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css" type="text/css"> 
         <link id="theme_style" type="text/css" href="assets/css/style_index.css" rel="stylesheet" media="screen">
     <style>
+    input{
+        display:block;
+        border-radius:10px;
+        background: #ffffff;
+        width:250px;
+        padding:12px 20px 12px 10px;
+        border:none;
+        color:#000000;                       
+        box-shadow:inset 0 1px 5px #272727;
+        transition:0.8s ease;
+        font-size:24px; 
+        margin:auto auto auto 550px;
+    }
     p{
         display:block;
         border-radius:10px;
@@ -36,17 +68,27 @@ $dnrow = mysqli_fetch_array($dnrs);
         margin:50px auto auto 550px;
     }
     h2{
-        margin:auto auto 40px 1150px;
+        margin:auto auto 0 1125px;
         font-style: italic;
-        font-size:18px
+        font-size:18px;
+    }
+    #update{
+        right: 450px;
+        bottom: 120px;
+        background: orange;
+        border-radius:0;
+        height:50px;
+        width:150px;
+        position:absolute;
     }
     button{
         right: 50px;
-        bottom: 120px;
+        bottom: 80px;
         background: #ffe282;
-        border-radius:0;
+        border-radius:5px;
         height:55px;
         width:85px;
+        position:absolute;
     }
     </style>
     <script>
@@ -59,7 +101,7 @@ $dnrow = mysqli_fetch_array($dnrs);
 			document.getElementById("myajax_test").innerHTML=ajaxtest.responseText;
             }
         }
-        ajaxtest.open("GET","ajax_test.txt",true);
+        ajaxtest.open("GET","ajaxtest.txt",true);
         ajaxtest.send();
 }
 </script>
@@ -90,6 +132,7 @@ $dnrow = mysqli_fetch_array($dnrs);
         </header>
         <div>
         <h1>Profile</h1>
+        <div>Avatars</div>
         <h3>Username:</h3>
         <p><?php
         echo $dnrow['username'];?></p>
@@ -99,6 +142,12 @@ $dnrow = mysqli_fetch_array($dnrs);
         <h3>Password:</h3>
         <p><?php
         echo $dnrow['password'];?></p>
+        <form method="post" >
+        <h3>Phone:</h3>
+        <input type="number" name="phone" value="<?php
+        echo $dnrow['phone'];?>" placeholder="phone" required>
+        <button id="update" type="submit" name="submit1">Update Phone #</button>
+        </form>
         </div>
         <div id="myajax_test"><h2>Privacy Policy</h2></div>
         <button type="button" onclick="openDoc()">View</button>

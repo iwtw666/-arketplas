@@ -28,7 +28,7 @@ if (!$link) {
                 }
                 else{
                     if ($_POST['password'] == $_POST['repw']){
-                        $query = "insert into users (username,email,password) values('{$_POST['name']}','{$_POST['email']}','{$_POST['password']}')";
+                        $query = "insert into users (username,email,password,phone) values('{$_POST['name']}','{$_POST['email']}','{$_POST['password']}','0')";
                         $result=mysqli_query($link, $query);
                         echo "<script>alert('Signup Complete!');
                         window.location.href = 'login.php';</script>";}
