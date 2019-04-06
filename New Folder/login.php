@@ -50,6 +50,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link id="theme_style" type="text/css" href="assets/css/style2.css" rel="stylesheet">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:regular,700,600&amp;latin" type="text/css" />
+        <title>Login</title>
         <!-- copy from index -->
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css" type="text/css"> 

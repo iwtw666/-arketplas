@@ -32,6 +32,7 @@ if (isset($_POST["submit1"])) {
         <meta charset='UTF-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link id="theme_style" type="text/css" href="assets/css/style2.css" rel="stylesheet">
+        <title>Myself</title>
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:regular,700,600&amp;latin" type="text/css" />
         <!-- copy from index -->
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
@@ -49,7 +50,24 @@ if (isset($_POST["submit1"])) {
         box-shadow:inset 0 1px 5px #272727;
         transition:0.8s ease;
         font-size:24px; 
-        margin:auto auto auto 550px;
+        margin:0 auto auto 550px;
+    }
+    .upload > input{
+        display:block;
+        border-radius:10px;
+        background: #ffffff;
+        width:230px;
+        height:40px;
+        padding:12px 20px 12px 10px;
+        border:none;
+        color:#000000;                       
+        box-shadow:inset 0 1px 5px #272727;
+        transition:0.8s ease;
+        font-size:16px; 
+        margin:0;
+    }
+    .widget-header > h3{
+        margin-left:0;
     }
     p{
         display:block;
@@ -68,17 +86,18 @@ if (isset($_POST["submit1"])) {
         margin:50px auto auto 550px;
     }
     h2{
+        right:200px;
         margin:auto auto 0 1125px;
         font-style: italic;
         font-size:18px;
     }
     #update{
-        right: 450px;
-        bottom: 120px;
+        left: 725px;
+        bottom: 80px;
         background: orange;
         border-radius:0;
         height:50px;
-        width:150px;
+        width:180px;
         position:absolute;
     }
     button{
@@ -132,24 +151,47 @@ if (isset($_POST["submit1"])) {
         </header>
         <div>
         <h1>Profile</h1>
-        <div>Avatars</div>
-        <h3>Username:</h3>
-        <p><?php
-        echo $dnrow['username'];?></p>
-        <h3>Email:</h3>
-        <p><?php
-        echo $dnrow['email'];?></p>
-        <h3>Password:</h3>
-        <p><?php
-        echo $dnrow['password'];?></p>
-        <form method="post" >
-        <h3>Phone:</h3>
-        <input type="number" name="phone" value="<?php
-        echo $dnrow['phone'];?>" placeholder="phone" required>
-        <button id="update" type="submit" name="submit1">Update Phone #</button>
-        </form>
+            <div class="col-md-4 col-sm-4">
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Avatars</h3>
+                    </div>
+                    <div class="widget-body">
+                        <img id="userphoto" src="./userphoto/default.png" height=200px;/><br />
+                        <form class="upload" action="uploadphoto.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="photo" /><br>
+                        <input type="submit" onclick="uploadphoto()" value="upload"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div>    
+                <h3>Username:</h3>
+                <p><?php
+                echo $dnrow['username'];?></p>
+                <h3>Email:</h3>
+                <p><?php
+                echo $dnrow['email'];?></p>
+                <h3>Password:</h3>
+                <p><?php
+                echo $dnrow['password'];?></p>
+                <form method="post" >
+                    <h3>Phone:</h3>
+                    <input type="number" name="phone" value="<?php
+                    echo $dnrow['phone'];?>" placeholder="phone" required>
+                    <button id="update" type="submit" name="submit1">Update Phone #</button>
+                </form>
+            </div>
         </div>
         <div id="myajax_test"><h2>Privacy Policy</h2></div>
         <button type="button" onclick="openDoc()">View</button>
+        <script>
+        function uploadphoto(){
+            document.getElementById("userphoto").src = "./userphoto/<?php echo $_SESSION['email'];?>.png"
+        }
+        window.onload = function(){
+            uploadphoto(); 
+        }
+        </script>
     </body>
 </html> 

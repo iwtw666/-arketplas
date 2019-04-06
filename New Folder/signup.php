@@ -47,6 +47,7 @@ if (!$link) {
     <head>
         <meta charset='UTF-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Signup</title>
         <link id="theme_style" type="text/css" href="assets/css/style2.css" rel="stylesheet">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:regular,700,600&amp;latin" type="text/css" />
         <!-- copy from index -->
