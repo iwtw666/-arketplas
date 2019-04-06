@@ -1,5 +1,5 @@
 <?php
- session_start();
+session_start();
 $path = "./userphoto/";
 
 $usermail = $_SESSION['email'];
