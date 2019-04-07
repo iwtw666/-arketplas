@@ -93,7 +93,7 @@ if (isset($_POST["submit1"])) {
     }
     #update{
         left: 725px;
-        bottom: 80px;
+        bottom: 70px;
         background: orange;
         border-radius:0;
         height:50px;
